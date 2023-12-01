@@ -91,7 +91,7 @@ char是定长的，varchar是变长的，变长字段实际存储长度的大小
  - name 列的值为 a，真实数据占用的字节数是 1 字节，十六进制 0x01；
  - phone 列的值为 123，真实数据占用的字节数是 3 字节，十六进制 0x03；
  - age 列和 id 列不是变长字段，所以这里不用管。  
-![compact2.png](image%2Fcompact2.png)
+![compact2.png](image%2Fcompact2.png)  
 这些变长字段会按照逆序存放，逆序放可以使位置靠前的记录的真实数据和数据对应的字段长度信息可以同时在一个cpu cache line中，可以提高cpu命中率。
 
 
