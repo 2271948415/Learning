@@ -76,5 +76,12 @@ B+ 树中每一层都是通过双向链表连接起来的，如果是以页为�
 数据段：存放 B + 树的叶子节点的区的集合；
 回滚段：存放的是回滚数据的区的集合，之前讲事务隔离 (opens new window)的时候就介绍到了 MVCC 利用了回滚段实现了多版本查询数据。
 ```
+### innoDB的行格式
+InnoDB 提供了 4 种行格式，分别是 Redundant、Compact、Dynamic和 Compressed 行格式。  
+Compact 是一种紧凑的行格式，设计的初衷就是为了让一个数据页中可以存放更多的行记录，从 MySQL 5.1 版本之后，行格式默认设置成 Compact。  
+### COMPACT行格式 
+![Example Image](./image/compact.png)
 
-
+一条完整的行记录包括记录的额外信息和记录的真实信息  
+ - 记录的额外信息  
+记录的额外信息包括变长字段长度列表、null值列表、记录头信息
