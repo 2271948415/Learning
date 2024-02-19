@@ -18,3 +18,8 @@ docker cp 容器id：容器内路径  目的路径  拷贝文件
 docker export 容器id > abc.tar 将容器导出成tar包
 cat abc.tar | docker import - 镜像用户/镜像名：镜像版本号  将tar包导入成容器
 ``` 
+### docker net  
+- bridge模式：为每个容器分配设置ip等，将容器连接到docker0虚拟网桥，默认为该模式。docker服务默认会创造一个docker0网桥，该网桥的名称为docker0，他在内核层链通了其他的物理或虚拟网卡，这样将所有容器和本地主机都放到同一个物理网络。docker默认指定了docker0接口的ip和子网掩码，让主机和容器之间可以通过网桥相互通信。  
+- host模式：直接使用宿主机ip地址与外界进行通信，不再需要额外的nat转换。  
+- none模式：禁用网络功能，不进行任何网络配置  
+- container模式：新创建的容器不会创建自己的王卡和配置自己的ip，而是和某个容器共享ip、端口范围等。
